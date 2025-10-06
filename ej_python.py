@@ -23,8 +23,8 @@ def calcular_area_circulo(radio):
         raise ValueError("El radio no puede ser negativo.")
     
     # Se usan 4 espacios para la indentación (PEP 8)
-    area = math.pi * (radio ** 2)
-    return area
+    area1 = math.pi * (radio ** 2)
+    return area1
 
 # Se dejan dos líneas en blanco después de la definición de la función (PEP 8)
 
