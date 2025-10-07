@@ -1,0 +1,11 @@
+{
+    "source": {
+        "include": ["ej_js.js"]
+    },
+    "opts": {
+        "encoding": "utf8",
+        "destination": "./docs/javascript/",
+        "recurse": true,
+        "readme": "README.md"
+    }
+}

@@ -1,48 +1,36 @@
 /**
- * Módulo para operaciones básicas con texto.
  * @module TextUtils
  */
 
 /**
- * Representa una utilidad para manipular strings.
+ * Clase para manejar la inversión de cadenas de texto.
  * @class
  */
 class StringReverser {
-
     /**
-     * Crea una instancia del StringReverser.
-     * @constructor
+     * Invierte una cadena de texto.
+     * @param {string} str - La cadena a invertir.
+     * @returns {string} La cadena invertida.
      */
-    constructor() {
-        // Inicialización simple
-    }
-
-    /**
-     * Invierte el orden de las palabras en una frase.
-     *
-     * @param {string} frase - La frase de entrada.
-     * @returns {string} La frase con el orden de las palabras invertido.
-     *
-     * @example
-     * // returns 'mundo hola'
-     * StringReverser.invertirPalabras('hola mundo');
-     */
-    invertirPalabras(frase) {
-        // 1. Dividir la frase en un array de palabras
-        const palabras = frase.split(' ');
-
-        // 2. Invertir el array
-        palabras.reverse();
-
-        // 3. Unir las palabras de nuevo en una string
-        return palabras.join(' ');
+    reverse(str) {
+        if (!str) {
+            return "";
+        }
+        return str.split('').reverse().join('');
     }
 }
 
-// Ejemplo de uso
+// Código de ejemplo que se ejecuta solo si el archivo es llamado directamente
+// (No afecta a las pruebas, pero puedes dejarlo si lo necesitas)
 const reverser = new StringReverser();
-const textoOriginal = "Git es genial";
-const textoInvertido = reverser.invertirPalabras(textoOriginal);
+const original = "Git es genial";
+const invertido = reverser.reverse(original);
 
-console.log(`Original: ${textoOriginal}`);
-console.log(`Invertido: ${textoInvertido}`);
+console.log("Original: " + original);
+console.log("Invertido: " + invertido);
+
+/**
+ * Esta línea es CRUCIAL para que Jest pueda importar la clase.
+ * Se debe añadir al final del archivo.
+ */
+module.exports = StringReverser;
