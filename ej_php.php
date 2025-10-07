@@ -1,49 +1,32 @@
 <?php
+
 /**
  * @file
- * Ejercicio simple de PHP para practicar PHPDoc.
+ * Contiene la lógica para determinar si un número es par o impar.
  */
 
 /**
- * Comprueba si un número entero dado es par o impar.
+ * Determina si un número es par o impar.
  *
- * @param int $numero El número entero a evaluar.
- * @return string Devuelve 'par' si el número es divisible por 2, o 'impar' en caso contrario.
- * @throws \InvalidArgumentException Si el argumento no es un entero.
+ * @param int $numero El número a evaluar.
+ * @return string El mensaje indicando si es PAR o IMPAR.
  */
-function determinarParImpar(int $numero): string
-{
-    // Una validación simple para demostrar
-    if (!is_int($numero)) {
-        throw new \InvalidArgumentException("La función solo acepta enteros.");
-    }
-
-    // El operador módulo (%) devuelve el resto de la división
-    if ($numero % 2 == 0) {
-        return 'par';
+function determinarParImpar(int $numero): string {
+    if ($numero % 2 === 0) {
+        return "El número $numero es PAR.";
     } else {
-        return 'impar';
+        return "El número $numero es IMPAR.";
     }
 }
 
 /**
- * Imprime el resultado de la determinación para un número dado.
- *
- * @param int $valor El número a probar.
- * @return void
+ * Este bloque es CRUCIAL para las pruebas unitarias.
+ * Solo se ejecuta el código de ejemplo si el archivo se llama directamente
+ * (evitando que se ejecute cuando PHPUnit lo requiere).
  */
-function probarFuncion(int $valor): void
-{
-    try {
-        $resultado = determinarParImpar($valor);
-        echo "El número {$valor} es {$resultado}." . PHP_EOL;
-    } catch (\InvalidArgumentException $e) {
-        echo "Error: " . $e->getMessage() . PHP_EOL;
-    }
+if (basename($_SERVER['PHP_SELF']) == 'ej_php.php') {
+    // Código de ejemplo
+    echo determinarParImpar(10) . "\n";
+    echo determinarParImpar(3) . "\n";
+    echo determinarParImpar(0) . "\n";
 }
-
-// Ejemplos de uso
-probarFuncion(10); // par
-probarFuncion(3);  // impar
-probarFuncion(0);  // par
-?>
