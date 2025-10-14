@@ -24,12 +24,8 @@ class ArrayProcessor {
      */
     processArrays() {
 <<<<<<< Updated upstream
-        // [LÍNEA DE CONFLICTO]: Modificar 'kiwi' por 'MANGO_B'
+        // [LÍNEA DE CONFLICTO]
         const array1 = ['manzana', 'banana', 'pera', 'uva', 'kiwi'];
-=======
-        // [LÍNEA DE CONFLICTO]: Modificar 'kiwi' por 'MANGO_A'
-        const array1 = ['manzana', 'banana', 'pera', 'uva', 'kiwi'];
->>>>>>> Stashed changes
         const array2 = ['uva', 'pera', 'naranja', 'fresa', 'mango'];
 
         // 1. INTERSECCIÓN (A ∩ B): Elementos en A que también están en B
