@@ -1,5 +1,5 @@
 /**
- * @fileoverview Lógica para realizar operaciones de conjuntos (Filter/Index) en arrays.
+ * @fileoverview Lógica para realizar operaciones de conjuntos (Set) en arrays.
  * @module ArrayProcessor
  */
 
@@ -27,18 +27,20 @@ class ArrayProcessor {
         const array1 = ['manzana', 'banana', 'pera', 'uva', 'kiwi']; 
         const array2 = ['uva', 'pera', 'naranja', 'fresa', 'mango'];
 
-        // 1. INTERSECCIÓN (A ∩ B): Elementos en A que también están en B
-        const arrayInterseccion = array1.filter(palabra => array2.includes(palabra));
+        // Usamos Set para búsqueda rápida O(1)
+        const setA = new Set(array1);
+        const setB = new Set(array2);
 
-        // 2. UNIÓN (A ∪ B): Concatenar y luego usar filter/indexOf para duplicados (Método tradicional)
-        const arrayCombinado = array1.concat(array2);
-        const arrayUnion = arrayCombinado.filter((palabra, indice) => {
-            // Se mantiene si la primera aparición de la palabra es su posición actual
-            return arrayCombinado.indexOf(palabra) === indice;
-        });
+        // 1. INTERSECCIÓN (A ∩ B): Elementos en A que también están en B
+        // Usamos Set.has(palabra) para búsqueda rápida O(1)
+        const arrayInterseccion = array1.filter(palabra => setB.has(palabra));
+
+        // 2. UNIÓN (A ∪ B): Usamos Set para eliminar duplicados automáticamente
+        const arrayUnion = Array.from(new Set([...array1, ...array2]));
 
         // 3. DIFERENCIA (A - B): Elementos en A que NO están en B
-        const arrayDiferencia = array1.filter(palabra => !array2.includes(palabra));
+        // Usamos Set.has(palabra) para búsqueda rápida O(1)
+        const arrayDiferencia = array1.filter(palabra => !setB.has(palabra));
 
         return { arrayInterseccion, arrayUnion, arrayDiferencia };
     }
